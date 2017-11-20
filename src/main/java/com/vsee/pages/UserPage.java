@@ -1,5 +1,6 @@
 package com.vsee.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -13,21 +14,28 @@ public class UserPage extends MobilePageObject {
 	public UserPage(WebDriver driver) {
 		super(driver);
 	}
-
 	
-	@AndroidFindBy(id = groupIdApp + "searchContact")
+	
+	@AndroidFindBy(id = "android:id/search_src_text")
 	@iOSFindBy(xpath = "")
 	private WebElement searchBox;
 	
+	@AndroidFindBy(id = "com.vsee.vsee.beta:id/itemChatListDetailLayout")
+	private WebElement firstContact;
+	
+	@AndroidFindBy(id = "com.vsee.vsee.beta:id/chatEditText")
+	private WebElement chatBox;
+	
+	
 	public void search_contact(String contactAddress) {
-		waitFor(searchBox).sendKeys(contactAddress);
-		// click to select contact
+		searchBox.sendKeys(contactAddress);
+		firstContact.click();
 
 	}
 
 	public void send_message(String messageContent) {
-		// type message
-		// click end or press Enter
+		chatBox.sendKeys(messageContent);
+		chatBox.sendKeys(Keys.ENTER);
 
 	}
 

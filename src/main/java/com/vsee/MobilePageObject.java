@@ -15,8 +15,6 @@ import net.thucydides.core.webdriver.WebDriverFacade;
 
 public class MobilePageObject extends PageObject {
 
-	protected final static String groupIdApp = "/";
-
 	public MobilePageObject(final WebDriver driver) {
 		super(driver, new Predicate<PageObject>() {
 			@Override

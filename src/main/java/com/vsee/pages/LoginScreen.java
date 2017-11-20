@@ -1,5 +1,6 @@
 package com.vsee.pages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -9,28 +10,32 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSFindBy;
 
 public class LoginScreen extends MobilePageObject {
+	
+	final static String groupIdApp = "com.vsee.vsee.beta:id/";
 
 	public LoginScreen(WebDriver driver) {
 		super(driver);
 	}
 
-	@AndroidFindBy(id = groupIdApp + "email")
+	@AndroidFindBy(id = groupIdApp + "loginEmailEdit")
 	@iOSFindBy(xpath = "")
 	private WebElement emailField;
 
-	@AndroidFindBy(id = groupIdApp + "password")
+	@AndroidFindBy(id = groupIdApp + "loginPasswordEdit")
 	private WebElement pwdField;
 
-	@AndroidFindBy(id = groupIdApp + "login")
+	@AndroidFindBy(id = groupIdApp + "loginSignInBut")
 	private WebElement loginBtn;
 
 	public void enter_email(String email) {
-		waitFor(emailField).sendKeys(email);
+		emailField.sendKeys(email);
+		emailField.sendKeys(Keys.TAB);
 
 	}
 
 	public void enter_password(String password) {
 		pwdField.sendKeys(password);
+		pwdField.sendKeys(Keys.TAB);
 
 	}
 
