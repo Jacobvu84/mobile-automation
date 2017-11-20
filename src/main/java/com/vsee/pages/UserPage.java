@@ -1,6 +1,5 @@
 package com.vsee.pages;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -8,6 +7,7 @@ import com.vsee.MobilePageObject;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSFindBy;
+import net.serenitybdd.core.annotations.findby.FindBy;
 
 public class UserPage extends MobilePageObject {
 
@@ -20,23 +20,47 @@ public class UserPage extends MobilePageObject {
 	@iOSFindBy(xpath = "")
 	private WebElement searchBox;
 	
-	@AndroidFindBy(id = "com.vsee.vsee.beta:id/itemChatListDetailLayout")
-	private WebElement firstContact;
 	
 	@AndroidFindBy(id = "com.vsee.vsee.beta:id/chatEditText")
 	private WebElement chatBox;
 	
+	@AndroidFindBy(id = "com.vsee.vsee.beta:id/itemContactListDetailsLayout")
+	private WebElement firstContact;
+	
+	
+	@AndroidFindBy(id = "com.vsee.vsee.beta:id/context_chat")
+	private WebElement contextChat;
+	
+	@AndroidFindBy(id = "com.vsee.vsee.beta:id/chatSendBut")
+	private WebElement chatSendBut;
+	
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='More']")
+	private WebElement NagivaMore;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Sign Out']")
+	private WebElement menuSignOut;
+	
+		
 	
 	public void search_contact(String contactAddress) {
-		searchBox.sendKeys(contactAddress);
+		waitFor(searchBox).sendKeys(contactAddress);
 		firstContact.click();
-
+		contextChat.click();
 	}
 
 	public void send_message(String messageContent) {
-		chatBox.sendKeys(messageContent);
-		chatBox.sendKeys(Keys.ENTER);
+		waitFor(chatBox).sendKeys(messageContent);
+		chatSendBut.click();
 
+	}
+
+	public void log_out() {
+		getDriver().navigate().back();
+		NagivaMore.click();
+		getDriver().navigate().back();
+		menuSignOut.click();
+		
 	}
 
 }

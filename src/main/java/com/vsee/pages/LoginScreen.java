@@ -1,13 +1,11 @@
 package com.vsee.pages;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.vsee.MobilePageObject;
 
 import io.appium.java_client.pagefactory.AndroidFindBy;
-import io.appium.java_client.pagefactory.iOSFindBy;
 
 public class LoginScreen extends MobilePageObject {
 	
@@ -18,7 +16,6 @@ public class LoginScreen extends MobilePageObject {
 	}
 
 	@AndroidFindBy(id = groupIdApp + "loginEmailEdit")
-	@iOSFindBy(xpath = "")
 	private WebElement emailField;
 
 	@AndroidFindBy(id = groupIdApp + "loginPasswordEdit")
@@ -28,15 +25,15 @@ public class LoginScreen extends MobilePageObject {
 	private WebElement loginBtn;
 
 	public void enter_email(String email) {
+		emailField.click();
 		emailField.sendKeys(email);
-		emailField.sendKeys(Keys.TAB);
+		getDriver().navigate().back();
 
 	}
 
 	public void enter_password(String password) {
 		pwdField.sendKeys(password);
-		pwdField.sendKeys(Keys.TAB);
-
+		getDriver().navigate().back();
 	}
 
 	public void click_on_login() {

@@ -25,7 +25,7 @@ public class LoginSteps extends ScenarioSteps {
 
 		public LoginBuilder(LoginScreen onLoginScreen) {
 			this.onLoginScreen = onLoginScreen;
-			onLoginScreen.enter_email(email);
+			this.onLoginScreen.enter_email(email);
 		}
 
 		public LoginBuilder with_password() {

@@ -28,9 +28,15 @@ public class UserSteps extends ScenarioSteps {
 
 		}
 
-		public void send_to(String contactAddress) {
+		public SendBuilder send_to(String contactAddress) {
 			userPage.search_contact(contactAddress);
 			userPage.send_message(messageContent);
+			return this;
+		}
+
+		public void then_logout() {
+			userPage.log_out();
+			
 		}
 
 	}

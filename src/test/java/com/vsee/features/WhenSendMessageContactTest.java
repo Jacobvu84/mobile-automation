@@ -28,7 +28,7 @@ public class WhenSendMessageContactTest {
 		
 		attempTo.use_email().with_password().login();
 		
-		jacob.compose().message("This message is sent by Jacob").send_to("Test Call");
+		jacob.compose().message("This message is sent by Jacob").send_to("Test Call").then_logout();
 		
 	}
 }
