@@ -15,7 +15,8 @@ public class LoginScreen extends MobilePageObject {
 		super(driver);
 	}
 
-	@AndroidFindBy(id = groupIdApp + "loginEmailEdit")
+	//@AndroidFindBy(id = groupIdApp + "loginEmailEdit")
+	@AndroidFindBy(xpath = "//android.widget.EditText[@text='Email']")
 	private WebElement emailField;
 
 	@AndroidFindBy(id = groupIdApp + "loginPasswordEdit")
@@ -23,9 +24,12 @@ public class LoginScreen extends MobilePageObject {
 
 	@AndroidFindBy(id = groupIdApp + "loginSignInBut")
 	private WebElement loginBtn;
-
+	
+	
 	public void enter_email(String email) {
-		emailField.click();
+
+		// Just work if click on the element by manual on screen first
+		emailField.click();  
 		emailField.sendKeys(email);
 		getDriver().navigate().back();
 

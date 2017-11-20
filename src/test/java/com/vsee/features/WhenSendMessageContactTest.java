@@ -19,16 +19,20 @@ public class WhenSendMessageContactTest {
 
 	@Steps
 	LoginSteps attempTo;
-	
+
 	@Steps
 	UserSteps jacob;
-	
+
 	@Test
 	public void sendMessageToContactThatiSOnTheContactList() {
-		
+
+		// GIVEN
 		attempTo.use_email().with_password().login();
-		
-		jacob.compose().message("This message is sent by Jacob").send_to("Test Call").then_logout();
-		
+
+		// WHEN
+		jacob.compose().message("This message is sent by automatically").send_to("Test Call").then_logout();
+
+		// THEN
+		// TODO: verify expected outcome
 	}
 }

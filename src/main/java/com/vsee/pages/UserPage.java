@@ -36,12 +36,13 @@ public class UserPage extends MobilePageObject {
 	
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='More']")
-	private WebElement NagivaMore;
+	private WebElement nagivaMore;
 	
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Sign Out']")
 	private WebElement menuSignOut;
 	
-		
+	@AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']")
+	private WebElement navigateUp;
 	
 	public void search_contact(String contactAddress) {
 		waitFor(searchBox).sendKeys(contactAddress);
@@ -56,8 +57,8 @@ public class UserPage extends MobilePageObject {
 	}
 
 	public void log_out() {
-		getDriver().navigate().back();
-		NagivaMore.click();
+		navigateUp.click();
+		nagivaMore.click();
 		getDriver().navigate().back();
 		menuSignOut.click();
 		
